@@ -1,7 +1,7 @@
-import { createCars } from "app/cars/cars-repository";
+import { createCars } from "../cars/cars-repository";
 import { TransactionBodyDTO } from "./transactions-dto";
 import { createTransaction, getTransactions } from "./transactions-repository";
-import { Query } from "interface/Query";
+import { Query } from "../../interface/Query";
 import { getTransactionsDTOMapper } from "./transactions-mapper";
 
 export const createTransactionService = async (data: TransactionBodyDTO) => {

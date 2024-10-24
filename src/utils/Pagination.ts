@@ -1,4 +1,4 @@
-import { Query } from "interface/Query";
+import { Query } from "../interface/Query";
 
 export const Pagination = <T>(data: T[], page = 1, perPage = 10) => {
   if (page < 1 || perPage < 1) {
