@@ -1,14 +1,16 @@
 import { Router, type Request, type Response } from "express";
+import { VerifyUser } from "../middleware/verifyToken";
 import authRoute from "../app/authentication/auth-route";
+import transactionRoute from "../app/transactions/transactions-route";
 import userRoute from "../app/users/users-route";
-import { VerifyToken } from "../middleware/verifyToken";
 import { MESSAGE_CODE } from "../utils/ErrorCode";
 import { MESSAGES } from "../utils/Messages";
 
 const route = Router();
 
 route.use("/auth", authRoute);
-route.use("/users", VerifyToken(), userRoute);
+route.use("/users", VerifyUser, userRoute);
+route.use("/transactions", VerifyUser, transactionRoute);
 // route.use(
 //   "/profile",
 //   profileRoute
