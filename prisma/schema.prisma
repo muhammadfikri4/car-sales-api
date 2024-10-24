@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String        @id @default(uuid())
+  name        String        @db.VarChar(255)
+  email       String        @unique @db.VarChar(110)
+  password    String        @db.VarChar(110)
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt   DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamp(0)
+  Transaction Transaction[]
+
+  @@index([email], map: "user_fk_1")
+  @@map("users")
+}
+
+model Car {
+  id          String        @id @default(uuid())
+  name        String        @db.VarChar(255)
+  color       String        @db.VarChar(255)
+  year        Int
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt   DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamp(0)
+  Transaction Transaction[]
+
+  @@map("cars")
+}
+
+model Transaction {
+  id        String   @id @default(uuid())
+  carId     String   @map("car_id") @db.VarChar(110)
+  userId    String   @map("user_id") @db.VarChar(110)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(0)
+  user      User     @relation(fields: [userId], references: [id])
+  car       Car      @relation(fields: [carId], references: [id])
+
+  @@index([carId], map: "transaction_fk_1")
+  @@index([userId], map: "transaction_fk_2")
+  @@map("transactions")
+}
