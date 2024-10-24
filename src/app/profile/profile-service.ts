@@ -3,9 +3,9 @@ import { MESSAGE_CODE } from "../../utils/ErrorCode";
 import { ErrorApp } from "../../utils/HttpError";
 import { MESSAGES } from "../../utils/Messages";
 import {
-    getUserByEmailUserId,
-    getUserById,
-    updatePassword
+  getUserByEmail,
+  getUserById,
+  updatePassword
 } from "../users/users-repository";
 import { ChangePasswordDTO } from "./profile-dto";
 import { getProfileDTOMapper } from "./profile-mapper";
@@ -24,10 +24,9 @@ export const getProfileService = async (userId: string) => {
 };
 
 export const changePasswordProfileService = async (
-  userId: string,
   body: ChangePasswordDTO
 ) => {
-  const user = await getUserByEmailUserId(body.email, userId);
+  const user = await getUserByEmail(body.email);
   if (!user) {
     return new ErrorApp(
       MESSAGES.ERROR.NOT_FOUND.USER.ACCOUNT,

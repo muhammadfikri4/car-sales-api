@@ -1,7 +1,10 @@
-import { NextFunction, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { RequestWithAccessToken } from "../../interface/Request";
 import { ErrorApp } from "../../utils/HttpError";
-import { changePasswordProfileService, getProfileService } from "./profile-service";
+import {
+  changePasswordProfileService,
+  getProfileService,
+} from "./profile-service";
 import { MESSAGES } from "../../utils/Messages";
 import { MESSAGE_CODE } from "../../utils/ErrorCode";
 import { HandleResponse } from "../../utils/HandleResponse";
@@ -27,13 +30,12 @@ export const getProfileController = async (
 };
 
 export const changePasswordController = async (
-  req: RequestWithAccessToken,
+  req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const { userId } = req;
   const { body } = req;
-  const result = await changePasswordProfileService(userId ?? "", body);
+  const result = await changePasswordProfileService(body);
   if (result instanceof ErrorApp) {
     next(result);
     return;

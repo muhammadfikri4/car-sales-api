@@ -12,7 +12,7 @@ const route = Router();
 route.use("/auth", authRoute);
 route.use("/users", VerifyUser, userRoute);
 route.use("/transactions", VerifyUser, transactionRoute);
-route.use("/profile", VerifyUser, profileRoute);
+route.use("/profile", profileRoute);
 
 route.get("/", (req: Request, res: Response) => {
   return res.json({ message: "Welcome to Car Sales API 🚀" });
