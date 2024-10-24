@@ -17,6 +17,6 @@ export const fileFilter = (req: Request, file: Express.Multer.File, cb: FileFilt
         return new ErrorApp(MESSAGES.ERROR.INVALID.IMAGE_SIZE, 400, MESSAGE_CODE.BAD_REQUEST)
     } else {
         cb(null, false);
-        return new ErrorApp(MESSAGES.ERROR.INVALID.FILE_TYPE, 400, MESSAGE_CODE.BAD_REQUEST)
+        return new ErrorApp(MESSAGES.ERROR.INVALID.TYPE_FILE, 400, MESSAGE_CODE.BAD_REQUEST)
     }
 };
