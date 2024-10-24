@@ -34,7 +34,7 @@ export const loginController = async (
   }
   HandleResponse(
     res,
-    201,
+    200,
     MESSAGE_CODE.SUCCESS,
     MESSAGES.SUCCESS.AUTH.SIGN_IN,
     user
