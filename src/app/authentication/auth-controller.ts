@@ -11,6 +11,7 @@ export const registerController = async (
   next: NextFunction
 ) => {
   const { body } = req;
+  console.log({body})
   const user = await registerService(body);
   if (user instanceof ErrorApp) {
     next(user);
@@ -25,6 +26,7 @@ export const loginController = async (
   next: NextFunction
 ) => {
   const { body } = req;
+  console.log({body})
   const user = await loginService(body);
   if (user instanceof ErrorApp) {
     next(user);
