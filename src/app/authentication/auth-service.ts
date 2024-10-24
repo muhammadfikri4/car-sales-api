@@ -20,7 +20,7 @@ export const registerService = async (data: RegisterBodyDAO) => {
 
   const result = await userRepository.createUser({
     email: data.email,
-    name: data.email,
+    name: data.name,
     password,
   });
 
