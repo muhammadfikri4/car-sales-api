@@ -91,6 +91,7 @@ export const MESSAGES = {
       DELETE: "Success to delete user",
       LOGIN: "Success to login",
       LOGOUT: "Success to logout",
+      PASSWORD: "Success to change password",
     },
     PROFILE: {
       GET: "Success to get profile",

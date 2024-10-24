@@ -3,9 +3,7 @@ import { CreateUserDAO } from "./users-dao";
 import { queryPagination } from "../../utils/Pagination";
 import { Query } from "../../interface/Query";
 
-export const createUser = async (
-  data: CreateUserDAO,
-) => {
+export const createUser = async (data: CreateUserDAO) => {
   return await prisma.user.create({
     data: {
       name: data.name,
@@ -38,11 +36,18 @@ export const getUsersCount = async (query: Query) => {
   });
 };
 
-
 export const getUserByEmail = async (email: string) => {
   return await prisma.user.findUnique({
     where: {
       email,
+    },
+  });
+};
+export const getUserByEmailUserId = async (email: string, userId: string) => {
+  return await prisma.user.findUnique({
+    where: {
+      email,
+      id: userId,
     },
   });
 };
@@ -54,3 +59,14 @@ export const getUserById = async (userId: string) => {
     },
   });
 };
+
+export const updatePassword = async (userId: string, password: string) => {
+  return await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      password,
+    },
+  });
+}

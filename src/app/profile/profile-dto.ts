@@ -3,3 +3,8 @@ export interface ProfileDTO {
     name: string
     email: string
 }
+
+export interface ChangePasswordDTO {
+    email: string
+    newPassword: string
+}
