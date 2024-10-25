@@ -35,15 +35,34 @@ model Car {
 }
 
 model Transaction {
-  id        String   @id @default(uuid())
-  name      String   @db.VarChar()
-  code      String   @unique @db.VarChar(110)
-  carId     String   @map("car_id") @db.VarChar(110)
-  amount    Decimal
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
-  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(0)
-  car       Car      @relation(fields: [carId], references: [id])
+  id              String   @id @default(uuid())
+  // name      String   @db.VarChar()
+  code            String   @unique @db.VarChar(110)
+  carId           String   @map("car_id") @db.VarChar(110)
+  fakturNumber    String   @map("faktur_number") @db.VarChar(110)
+  buyerId         String   @map("buyer_id")
+  amount          Decimal
+  transactionDate String? @map("transaction_date")
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt       DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamp(0)
+  car             Car      @relation(fields: [carId], references: [id])
+  buyer           Buyer    @relation(fields: [buyerId], references: [id])
 
   @@index([carId], map: "transaction_fk_1")
+  @@index([buyerId], map: "transaction_fk_2")
   @@map("transactions")
+}
+
+model Buyer {
+  id          String        @id @default(uuid())
+  name        String        @db.VarChar(110)
+  code        String        @db.VarChar(110)
+  job         String        @db.VarChar(110)
+  address     String        @db.VarChar(110)
+  phoneNumber String        @map("phone_number") @db.VarChar(110)
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamp(0)
+  updatedAt   DateTime      @default(now()) @updatedAt @map("updated_at") @db.Timestamp(0)
+  Transaction Transaction[]
+
+  @@map("buyers")
 }

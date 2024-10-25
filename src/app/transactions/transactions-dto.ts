@@ -1,26 +1,35 @@
 export interface CreateTransaction {
   code: string;
-  name: string;
+  // name: string;
   carId: string;
   amount: number;
+  buyerId: string;
+  fakturNumber: string;
 }
 
 export interface TransactionBodyDTO {
-  buyerName: string;
   color: string;
   carCode: string;
   merk: string;
   price: number;
   carName: string;
   year: number;
+
+  fakturNumber: string;
+
+  buyerName: string;
+  buyerAddress: string;
+  buyerCode: string;
+  buyerJob: string;
+  buyerPhoneNumber: string;
 }
 
 export interface TransactionDTO {
   id: string;
-  name: string;
   code: string;
   amount: number;
-  transactionDate: Date;
+  transactionDate: string;
+  fakturNumber: string
   car: {
     id: string;
     name: string;
@@ -29,5 +38,13 @@ export interface TransactionDTO {
     merk: string;
     year: number;
     price: number;
+  };
+  buyer: {
+    id: string;
+    name: string;
+    address: string;
+    code: string;
+    job: string;
+    phoneNumber: string;
   };
 }

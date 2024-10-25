@@ -73,6 +73,13 @@ export const MESSAGES = {
       PRICE: "Price is required",
       CAR_NAME: "Car Name is required",
       DESCRIPTION: "Description is required",
+      FAKTUR_NUMBER: "Faktur Number is required",
+      BUYER_NAME: "Buyer Name is required",
+      BUYER_ADDRESS: "Buyer Address is required",
+      BUYER_CODE: "Buyer Code is required",
+      BUYER_JOB: "Buyer Job is required",
+      BUYER_PHONE_NUMBER: "Buyer Phone Number is required",
+      STRING: "Field must be a string",
     },
     FORBIDDEN: {
       ROLE: "Role can't be access this feature",
