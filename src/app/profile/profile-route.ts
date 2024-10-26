@@ -4,7 +4,7 @@ import {
   getProfileController,
 } from "./profile-controller";
 import { VerifyUser } from "../../middleware/verifyToken";
-import { validateRequest } from "middleware/validateRequest";
+import { validateRequest } from "../../middleware/validateRequest";
 import { updatePasswordSchema } from "./profile-request";
 
 const route = Router();
