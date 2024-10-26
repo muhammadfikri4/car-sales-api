@@ -3,7 +3,7 @@ import { TransactionBodyDTO } from "./transactions-dto";
 import { createTransaction, getTransactions } from "./transactions-repository";
 import { Query } from "../../interface/Query";
 import { getTransactionsDTOMapper } from "./transactions-mapper";
-import { createBuyer } from "app/buyers/buyers-repository";
+import { createBuyer } from "../buyers/buyers-repository";
 
 export const createTransactionService = async (data: TransactionBodyDTO) => {
   const cars = await createCars({
