@@ -11,18 +11,16 @@ export const createTransaction = async (data: CreateTransaction) => {
       amount: data.amount,
       fakturNumber: data.fakturNumber,
       buyerId: data.buyerId,
+      userId: data.userId
     },
   });
 };
 
-export const getTransactions = async (query: Query) => {
+export const getTransactions = async (query: Query, userId: string) => {
   const { search } = query;
   return await prisma.transaction.findMany({
     where: {
-      // name: {
-      //   contains: search,
-      //   mode: "insensitive",
-      // },
+      userId,
       car: {
         name: {
           contains: search,
@@ -33,6 +31,7 @@ export const getTransactions = async (query: Query) => {
     include: {
       car: true,
       buyer: true,
+      user: true
     },
   });
 };

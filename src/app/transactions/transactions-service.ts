@@ -5,7 +5,10 @@ import { Query } from "../../interface/Query";
 import { getTransactionsDTOMapper } from "./transactions-mapper";
 import { createBuyer } from "../buyers/buyers-repository";
 
-export const createTransactionService = async (data: TransactionBodyDTO) => {
+export const createTransactionService = async (
+  data: TransactionBodyDTO,
+  userId: string
+) => {
   const cars = await createCars({
     merk: data.merk,
     code: data.carCode,
@@ -26,10 +29,10 @@ export const createTransactionService = async (data: TransactionBodyDTO) => {
   const transaction = await createTransaction({
     carId: cars.id,
     code: `TRX-${+new Date()}`,
-    // name: data.buyerName,
     buyerId: buyer.id,
     fakturNumber: data.fakturNumber,
     amount: data.price,
+    userId,
   });
 
   return {
@@ -39,8 +42,8 @@ export const createTransactionService = async (data: TransactionBodyDTO) => {
   };
 };
 
-export const getTransactionsService = async (query: Query) => {
-  const transactions = await getTransactions(query);
+export const getTransactionsService = async (query: Query, userId: string) => {
+  const transactions = await getTransactions(query, userId);
   const data = getTransactionsDTOMapper(transactions);
   return data;
 };

@@ -1,9 +1,10 @@
-import { Buyer, Car, Transaction } from "@prisma/client";
+import { Buyer, Car, Transaction, User } from "@prisma/client";
 import { TransactionDTO } from "./transactions-dto";
 
 export interface TransactionCars extends Transaction {
   car: Car;
   buyer: Buyer;
+  user: User;
 }
 
 export const getTransactionsDTOMapper = (
@@ -13,6 +14,7 @@ export const getTransactionsDTOMapper = (
     id: item.id,
     fakturNumber: item.fakturNumber,
     code: item.code,
+    createdBy: item.user.name,
     amount: Number(item.amount),
     transactionDate: item.transactionDate as string,
     car: {

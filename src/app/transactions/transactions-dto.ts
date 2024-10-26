@@ -2,6 +2,7 @@ export interface CreateTransaction {
   code: string;
   // name: string;
   carId: string;
+  userId: string;
   amount: number;
   buyerId: string;
   fakturNumber: string;
@@ -30,6 +31,7 @@ export interface TransactionDTO {
   amount: number;
   transactionDate: string;
   fakturNumber: string
+  createdBy: string
   car: {
     id: string;
     name: string;
