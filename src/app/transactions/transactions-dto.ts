@@ -1,6 +1,6 @@
 export interface CreateTransaction {
   code: string;
-  // name: string;
+  transactionDate: string;
   carId: string;
   userId: string;
   amount: number;
@@ -15,7 +15,7 @@ export interface TransactionBodyDTO {
   price: number;
   carName: string;
   year: number;
-
+  transactionDate: string
   fakturNumber: string;
 
   buyerName: string;

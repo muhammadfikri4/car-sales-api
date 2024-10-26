@@ -11,7 +11,8 @@ export const createTransaction = async (data: CreateTransaction) => {
       amount: data.amount,
       fakturNumber: data.fakturNumber,
       buyerId: data.buyerId,
-      userId: data.userId
+      userId: data.userId,
+      transactionDate: data.transactionDate
     },
   });
 };

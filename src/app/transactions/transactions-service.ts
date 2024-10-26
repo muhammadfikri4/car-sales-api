@@ -33,6 +33,7 @@ export const createTransactionService = async (
     fakturNumber: data.fakturNumber,
     amount: data.price,
     userId,
+    transactionDate: data.transactionDate,
   });
 
   return {
